@@ -2,6 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+/* TODOS for future learning - descending order of difficulty
+  - Display the location for each move in the format (col, row) in the move history list.
+  - Bold the currently selected item in the move list.
+  - Rewrite Board to use two loops to make the squares instead of hardcoding them.
+  - Add a toggle button that lets you sort the moves in either ascending or descending order.
+  - When someone wins, highlight the three squares that caused the win.
+  - When no one wins, display a message about the result being a draw.
+*/
+
 function Square(props) {
   return (
     <button className='square'
@@ -51,12 +60,14 @@ class Game extends React.Component {
       history: [{
           squares: Array(9).fill(null)
         }],
+      // keeps track of move we are viewing
+      stepNumber: 0,
       xIsNext: true
     }
   }
 
   handleClick(i) {
-    const history = this.state.history;
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
 
     // makes shallow copy of arr that represents squares on board
@@ -72,15 +83,36 @@ class Game extends React.Component {
       history: history.concat([{
         squares: squares
       }]),
+      stepNumber: history.length,
       // toggles X or O
       xIsNext: !this.state.xIsNext
     });
   }
 
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2 === 0)
+    })
+  }
+
   render() {
     const history = this.state.history;
-    const current = history[history.length - 1];
+    const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
+    
+    // maps over history array and displays buttons for past moves
+    const moves = history.map((step, move) => {
+      const desc = move ?
+                      'Go to move #' + move :
+                      'Go to game start';
+      return (
+        /* use move 4 key cuz moves are never reordered or deleted */
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
     
     let status;
     winner ?
@@ -99,7 +131,7 @@ class Game extends React.Component {
 
         <div className='game-info'>
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     )
