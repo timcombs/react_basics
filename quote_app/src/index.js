@@ -23,9 +23,29 @@ class App extends React.Component {
       quotes: []
     }
   }
+
+  async componentDidMount() {
+    try {
+      const res = await fetch('https://raw.githubusercontent.com/timcombs/marx-headmon/master/quotes.json');
+      const text = await res.text();
+      this.setState({
+        quotes: JSON.parse(text).quotes
+      });
+      console.log(this.state.quotes);
+    }catch(err){
+      console.log(err);
+      alert('We have no bananas!');
+    }
+  }
+
   render() {
     return (
-      <div>Got it rendering!</div>
+      <div>
+        <p>Got it rendering!</p>
+        <br />
+        something
+    {/* </div>{this.state.quotes} */}
+      </div>
     );
   }
 };
