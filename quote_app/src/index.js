@@ -43,10 +43,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Got it rendering!</p>
-        <br />
-        <Quote quotes={this.state.quotes} />
-        {/* <AllQuotes quotes={this.state.quotes} /> */}
+        <section className='card'>
+          <Quote quotes={this.state.quotes} />
+          {/* <AllQuotes quotes={this.state.quotes} /> */}
+          <button className='button'>twitter</button>
+          <button className='button'>tumblr</button>
+          <button className='button getquote'>New Quote</button>
+        </section>
       </div>
     );
   }
@@ -63,8 +66,8 @@ function Quote(props) {
 
   return (
     <div>
-      <p>{randQuote}</p>
-      <p>{randAuthor}</p>
+      <p className='quote'>{randQuote}</p>
+      <p className='author'>{randAuthor}</p>
     </div>
   );
 }

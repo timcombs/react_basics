@@ -1,4 +1,4 @@
-/* Colors for App
+/* Colors for App - need to order these from lighter to darker
   oranges
   rgb(223,148,148)
   rgb(231,139,139)
@@ -32,5 +32,38 @@
 */
 
 body {
-  background-color: 
+  background-color: rgb(154,96,96);
+}
+
+.card {
+  background-color: rgb(166,185,185);
+  width: 450px;
+  margin: 20% auto;
+  border-radius: 3px;
+}
+
+.quote {
+  color: rgb(205,122,122);
+  font-size: 4vh;
+  text-align: center;
+  padding: 10vh 2vh 0vh 2vh;
+}
+
+.author {
+  color: rgb(121,133,133);
+  text-align: right;
+  padding: 2vh;
+}
+
+.button {
+  color: rgb(205,122,122);
+  border-radius: 3px;
+  font-size: 2vh;
+  text-align: right;
+  padding: 2vh;
+  margin: 5vh;
+}
+
+.getquote {
+  float: right;
 }
