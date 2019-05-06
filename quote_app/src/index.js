@@ -31,10 +31,8 @@ class App extends React.Component {
       this.setState({
         quotes: JSON.parse(text).quotes
       });
-      console.log(this.state.quotes);
     }catch(err){
       console.log(err);
-      alert('We have no bananas!');
     }
   }
 
@@ -43,12 +41,25 @@ class App extends React.Component {
       <div>
         <p>Got it rendering!</p>
         <br />
-        something
-    {/* </div>{this.state.quotes} */}
+        <AllQuotes quotes={this.state.quotes} />
+        {/* quotes */}
       </div>
     );
   }
 };
+
+function AllQuotes(props) {
+  console.log('in All Quotes', props.quotes);
+  const quotes = props.quotes.map((quote) => {
+      return (
+        <div key={quote.author + quote.quote.slice(0, 10)}>{quote.quote}</div>
+      );
+    });
+
+  return (
+    <div>{quotes}</div>
+  );
+}
 
 // ++++++++++++++++++++++++++++++++++++++++++++++
 ReactDOM.render(
