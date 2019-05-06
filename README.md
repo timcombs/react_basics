@@ -1,3 +1,3 @@
 # react_basics
 
-## This repo is study React through sample projects
+## This repo is for studying React through sample projects
