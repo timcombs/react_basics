@@ -20,20 +20,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quotes: []
-    }
+      quotes: [{
+        quote: '',
+        author: ''
+      }]
+    };
   }
 
   async componentDidMount() {
     try {
-      const res = await fetch('https://raw.githubusercontent.com/timcombs/marx-headmon/master/quotes.json');
-      const text = await res.text();
+      const blob = await fetch('https://raw.githubusercontent.com/timcombs/marx-headmon/master/quotes.json');
+      const text = await blob.text();
+      const json = JSON.parse(text);
       this.setState({
-        quotes: JSON.parse(text).quotes
+        quotes: json.quotes
       });
-    }catch(err){
-      console.log(err);
-    }
+      }catch(err){
+        console.log(err);
+      }
   }
 
   render() {
@@ -41,25 +45,42 @@ class App extends React.Component {
       <div>
         <p>Got it rendering!</p>
         <br />
-        <AllQuotes quotes={this.state.quotes} />
-        {/* quotes */}
+        <Quote quotes={this.state.quotes} />
+        {/* <AllQuotes quotes={this.state.quotes} /> */}
       </div>
     );
   }
 };
 
-function AllQuotes(props) {
-  console.log('in All Quotes', props.quotes);
-  const quotes = props.quotes.map((quote) => {
-      return (
-        <div key={quote.author + quote.quote.slice(0, 10)}>{quote.quote}</div>
-      );
-    });
+function Quote(props) {
+  const quotes = props.quotes;
+  const len = props.quotes.length;
+  const rnd = Math.floor(Math.random() * len);
+
+  const randQuote = quotes[rnd].quote;
+  const randAuthor = quotes[rnd].author;
+
 
   return (
-    <div>{quotes}</div>
+    <div>
+      <p>{randQuote}</p>
+      <p>{randAuthor}</p>
+    </div>
   );
 }
+
+// function AllQuotes(props) {
+//    const quotes = props.quotes.map((quote) => {
+//       return (
+//         <div key={quote.author + quote.quote.slice(0, 10)}>{quote.quote}</div>
+//       );
+//     });
+//   console.log(props);
+
+//   return (
+//     <div>{quotes}</div>
+//   );
+// }
 
 // ++++++++++++++++++++++++++++++++++++++++++++++
 ReactDOM.render(
