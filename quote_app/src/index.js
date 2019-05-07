@@ -59,10 +59,8 @@ class App extends React.Component {
   }
 
   getQuote(arr) {
-    console.log(arr);
     const len = arr.length;
     const rnd = Math.floor(Math.random() * len);
-    console.log(arr[rnd]);
     return arr[rnd];
   }
 
@@ -70,7 +68,7 @@ class App extends React.Component {
     return (
       <div>
         <section className='card'>
-          <Quote quotes={this.state.currQuote} />
+          <Quote currQuote={this.state.currQuote} />
           {/* <AllQuotes quotes={this.state.quotes} /> */}
           <TwitterButton onClick={(e) => this.handleClick(e)} />
           <TumblrButton onClick={(e) => this.handleClick(e)} />
@@ -100,13 +98,10 @@ function TumblrButton(props) {
 }
 
 function Quote(props) {
-  const quote = props;
-  console.log('in Quote component', props.quotes);
-
   return (
     <div>
-      <p className='quote'>{quote.quotes.quote}</p>
-      <p className='author'>{quote.quotes.author}</p>
+      <p className='quote'>{props.currQuote.quote}</p>
+      <p className='author'>{props.currQuote.author}</p>
     </div>
   );
 }
