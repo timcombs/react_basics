@@ -54,6 +54,7 @@ class App extends React.Component {
       });
     }else if (e.target.name === 'twitter') {
       console.log('TWITTER');
+      window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent(`"${this.state.currQuote.quote} -${this.state.currQuote.author}`), '_blank');
     }else if (e.target.name === 'tumblr')
     console.log('TUMBLR');
   }
@@ -86,6 +87,7 @@ function NewQuoteButton(props) {
 }
 
 function TwitterButton(props) {
+  console.log(props);
   return (
     <button className='button' name='twitter' onClick={props.onClick}>Twitter</button>
   );
