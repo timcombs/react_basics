@@ -35,9 +35,18 @@ class App extends React.Component {
       this.setState({
         quotes: json.quotes
       });
-      }catch(err){
-        console.log(err);
-      }
+    }catch(err){
+      console.log(err);
+    }
+  }
+  
+  handleClick(e) {
+    if (e.target.name === 'newquote') {
+      console.log('NEWQUOTE');
+    }else if (e.target.name === 'twitter') {
+      console.log('TWITTER');
+    }else if (e.target.name === 'tumblr')
+    console.log('TUMBLR');
   }
 
   render() {
@@ -46,14 +55,32 @@ class App extends React.Component {
         <section className='card'>
           <Quote quotes={this.state.quotes} />
           {/* <AllQuotes quotes={this.state.quotes} /> */}
-          <button className='button'>twitter</button>
-          <button className='button'>tumblr</button>
-          <button className='button getquote'>New Quote</button>
+          <TwitterButton onClick={(e) => this.handleClick(e)} />
+          <TumblrButton onClick={(e) => this.handleClick(e)} />
+          <NewQuoteButton onClick={(e) => this.handleClick(e)} />
         </section>
       </div>
     );
   }
-};
+}
+
+function NewQuoteButton(props) {
+  return (
+    <button className='button getquote' name='newquote' onClick={props.onClick}>New Quote</button>
+  );
+}
+
+function TwitterButton(props) {
+  return (
+    <button className='button' name='twitter' onClick={props.onClick}>Twitter</button>
+  );
+}
+
+function TumblrButton(props) {
+  return (
+    <button className='button' name='tumblr' onClick={props.onClick}>Tumblr</button>
+  );
+}
 
 function Quote(props) {
   const quotes = props.quotes;
