@@ -35,6 +35,11 @@ body {
   background-color: rgb(154,96,96);
 }
 
+button:focus {
+  outline: none !important;
+  background-color: rgb(126,118,118);
+}
+
 .card {
   background-color: rgb(166,185,185);
   width: 450px;
@@ -44,11 +49,11 @@ body {
 
 .quote {
   color: rgb(205,122,122);
-  font-size: 4vh;
+  font-size: 20px;
   text-align: center;
   padding: 10vh 2vh 0vh 2vh;
 }
-
+ 
 .author {
   color: rgb(121,133,133);
   text-align: right;

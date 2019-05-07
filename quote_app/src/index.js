@@ -23,7 +23,11 @@ class App extends React.Component {
       quotes: [{
         quote: '',
         author: ''
-      }]
+      }],
+      currQuote: {
+        quote: '',
+        author: ''
+      }
     };
   }
 
@@ -31,29 +35,42 @@ class App extends React.Component {
     try {
       const blob = await fetch('https://raw.githubusercontent.com/timcombs/marx-headmon/master/quotes.json');
       const text = await blob.text();
-      const json = JSON.parse(text);
+      const json = await JSON.parse(text);
       this.setState({
-        quotes: json.quotes
+        quotes: json.quotes,
+        currQuote: this.getQuote(json.quotes)
       });
     }catch(err){
       console.log(err);
     }
+
   }
   
   handleClick(e) {
     if (e.target.name === 'newquote') {
       console.log('NEWQUOTE');
+      this.setState({
+        currQuote: this.getQuote(this.state.quotes)
+      });
     }else if (e.target.name === 'twitter') {
       console.log('TWITTER');
     }else if (e.target.name === 'tumblr')
     console.log('TUMBLR');
   }
 
+  getQuote(arr) {
+    console.log(arr);
+    const len = arr.length;
+    const rnd = Math.floor(Math.random() * len);
+    console.log(arr[rnd]);
+    return arr[rnd];
+  }
+
   render() {
     return (
       <div>
         <section className='card'>
-          <Quote quotes={this.state.quotes} />
+          <Quote quotes={this.state.currQuote} />
           {/* <AllQuotes quotes={this.state.quotes} /> */}
           <TwitterButton onClick={(e) => this.handleClick(e)} />
           <TumblrButton onClick={(e) => this.handleClick(e)} />
@@ -83,18 +100,13 @@ function TumblrButton(props) {
 }
 
 function Quote(props) {
-  const quotes = props.quotes;
-  const len = props.quotes.length;
-  const rnd = Math.floor(Math.random() * len);
-
-  const randQuote = quotes[rnd].quote;
-  const randAuthor = quotes[rnd].author;
-
+  const quote = props;
+  console.log('in Quote component', props.quotes);
 
   return (
     <div>
-      <p className='quote'>{randQuote}</p>
-      <p className='author'>{randAuthor}</p>
+      <p className='quote'>{quote.quotes.quote}</p>
+      <p className='author'>{quote.quotes.author}</p>
     </div>
   );
 }
