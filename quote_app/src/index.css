@@ -57,11 +57,14 @@ body {
 
 .button {
   color: rgb(205,122,122);
+  background-color: rgb(154,96,96);
   border-radius: 3px;
   font-size: 2vh;
   text-align: right;
   padding: 2vh;
   margin: 5vh;
+  border-color: rgb(119,93,93);
+  border-width: 1px;
 }
 
 .getquote {
