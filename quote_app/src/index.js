@@ -54,9 +54,12 @@ class App extends React.Component {
       });
     }else if (e.target.name === 'twitter') {
       console.log('TWITTER');
-      window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent(`"${this.state.currQuote.quote} -${this.state.currQuote.author}`), '_blank');
-    }else if (e.target.name === 'tumblr')
+      window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent(`${this.state.currQuote.quote} -${this.state.currQuote.author}`), '_blank');
+    }else if (e.target.name === 'tumblr') {
     console.log('TUMBLR');
+    window.open('https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=' + encodeURIComponent(this.state.currQuote.author) + '&content=' + encodeURIComponent(this.state.currQuote.quote)+'&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button');
+    }
+
   }
 
   getQuote(arr) {
