@@ -31,38 +31,32 @@
 
 */
 
-body {
-  background-color: rgb(154,96,96);
-}
-
 button:focus {
   outline: none !important;
-  background-color: rgb(126,118,118);
+  background-color: rgb(101,98,98);
 }
 
 .card {
-  background-color: rgb(166,185,185);
+  background-color: rgb(216,235,235);
   width: 450px;
   margin: 20% auto;
   border-radius: 3px;
 }
 
 .quote {
-  color: rgb(205,122,122);
   font-size: 20px;
   text-align: center;
   padding: 10vh 2vh 0vh 2vh;
 }
  
 .author {
-  color: rgb(121,133,133);
+  color: rgb(101,113,113);
+  font-size: 16px;
   text-align: right;
   padding: 2vh;
 }
 
 .button {
-  color: rgb(205,122,122);
-  background-color: rgb(154,96,96);
   border-radius: 3px;
   font-size: 2vh;
   text-align: right;
@@ -72,6 +66,54 @@ button:focus {
   border-width: 1px;
 }
 
+body {
+  background-color: rgb(154,96,96);
+}
+
 .getquote {
   float: right;
+}
+
+/* +++++++++++++++++ color scheme 1 ++++++++++++++++++++ */
+.elem-clr1 {
+  background-color: rgb(154,96,96);
+  transition: background-color .4s ease-in-out;
+}
+
+.txt-clr1 {
+  color: rgb(220,137,137);
+  transition: color .45s ease-in-out;
+}
+
+/* +++++++++++++++++ color scheme 2 ++++++++++++++++++++ */
+.elem-clr2 {
+  background-color: rgb(223,148,85);
+  transition: background-color .4s ease-in-out;
+}
+
+.txt-clr2 {
+  color: rgb(121,125,103);
+  transition: color .45s ease-in-out;
+}
+
+/* +++++++++++++++++ color scheme 3 ++++++++++++++++++++ */
+.elem-clr3 {
+  background-color: rgb(126,185,185);
+  transition: background-color .4s ease-in-out;
+}
+
+.txt-clr3 {
+  color: rgb(113,136,136);
+  transition: color .45s ease-in-out;
+}
+
+/* +++++++++++++++++ color scheme 4 ++++++++++++++++++++ */
+.elem-clr4 {
+  background-color: rgb(68,116,116);
+  transition: background-color .4s ease-in-out;
+}
+
+.txt-clr4 {
+  color: rgb(189,129,105);
+  transition: color .45s ease-in-out;
 }

@@ -27,6 +27,10 @@ class App extends React.Component {
       currQuote: {
         quote: '',
         author: ''
+      },
+      clrScheme: {
+        bkg: 'elem-clr1',
+        txt: 'txt-clr1'
       }
     };
   }
@@ -52,12 +56,13 @@ class App extends React.Component {
       this.setState({
         currQuote: this.getQuote(this.state.quotes)
       });
+      this.changeColors();
     }else if (e.target.name === 'twitter') {
       console.log('TWITTER');
       window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent(`${this.state.currQuote.quote} -${this.state.currQuote.author}`), '_blank');
     }else if (e.target.name === 'tumblr') {
     console.log('TUMBLR');
-    window.open('https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=' + encodeURIComponent(this.state.currQuote.author) + '&content=' + encodeURIComponent(this.state.currQuote.quote)+'&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button');
+    window.open('https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=' + encodeURIComponent(this.state.currQuote.author) + '&content=' + encodeURIComponent(this.state.currQuote.quote)+'&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button', '_blank');
     }
 
   }
@@ -66,6 +71,33 @@ class App extends React.Component {
     const len = arr.length;
     const rnd = Math.floor(Math.random() * len);
     return arr[rnd];
+  }
+
+  changeColors() {
+    const buttons = document.querySelectorAll('.button');
+    const bkg = document.querySelector('body');
+    const quoteText = document.querySelector('.quote');
+
+    const rnd = Math.floor(Math.random() * 4) + 1;
+
+    buttons.forEach((button) => {
+      button.classList.replace(this.state.clrScheme.bkg, `elem-clr${rnd}`);
+      button.classList.replace(this.state.clrScheme.txt, `txt-clr${rnd}`);
+    });
+
+    bkg.classList.contains(this.state.clrScheme.bkg) ?
+      bkg.classList.replace(this.state.clrScheme.bkg, `elem-clr${rnd}`) :
+      bkg.classList.add(`elem-clr${rnd}`);
+    
+    quoteText.classList.replace(this.state.clrScheme.txt, `txt-clr${rnd}`);
+
+    this.setState({
+      clrScheme: {
+        bkg: `elem-clr${rnd}`,
+        txt: `txt-clr${rnd}`
+      }
+    })
+
   }
 
   render() {
@@ -85,28 +117,28 @@ class App extends React.Component {
 
 function NewQuoteButton(props) {
   return (
-    <button className='button getquote' name='newquote' onClick={props.onClick}>New Quote</button>
+    <button className='button getquote elem-clr1 txt-clr1' name='newquote' onClick={props.onClick}>New Quote</button>
   );
 }
 
 function TwitterButton(props) {
   console.log(props);
   return (
-    <button className='button' name='twitter' onClick={props.onClick}>Twitter</button>
+    <button className='button elem-clr1 txt-clr1' name='twitter' onClick={props.onClick}>Twitter</button>
   );
 }
 
 function TumblrButton(props) {
   return (
-    <button className='button' name='tumblr' onClick={props.onClick}>Tumblr</button>
+    <button className='button elem-clr1 txt-clr1' name='tumblr' onClick={props.onClick}>Tumblr</button>
   );
 }
 
 function Quote(props) {
   return (
     <div>
-      <p className='quote'>{props.currQuote.quote}</p>
-      <p className='author'>{props.currQuote.author}</p>
+      <p className='quote txt-clr1'>{props.currQuote.quote}</p>
+      <p className='author'>- {props.currQuote.author}</p>
     </div>
   );
 }
