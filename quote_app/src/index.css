@@ -78,6 +78,7 @@ body {
 .elem-clr1 {
   background-color: rgb(154,96,96);
   transition: background-color .4s ease-in-out;
+  fill: red;
 }
 
 .txt-clr1 {
@@ -89,6 +90,7 @@ body {
 .elem-clr2 {
   background-color: rgb(223,148,85);
   transition: background-color .4s ease-in-out;
+  fill: red;
 }
 
 .txt-clr2 {
@@ -100,6 +102,7 @@ body {
 .elem-clr3 {
   background-color: rgb(126,185,185);
   transition: background-color .4s ease-in-out;
+  fill: red;
 }
 
 .txt-clr3 {
