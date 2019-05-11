@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ReactComponent as TwitterLogo} from './twitLogo.svg';
 import './index.css';
 
 /* TODOs
@@ -120,7 +119,7 @@ function NewQuoteButton(props) {
 function TwitterButton(props) {
   console.log(props);
   return (
-    <TwitterLogo className='button elem-clr1 txt-clr1' name='twitter' onClick={props.onClick}/>
+    <button className='button elem-clr1 txt-clr1' name='twitter' onClick={props.onClick}>Twitter</button>
   );
 }
 
@@ -138,6 +137,8 @@ function Quote(props) {
     </div>
   );
 }
+
+
 
 // function AllQuotes(props) {
 //    const quotes = props.quotes.map((quote) => {
