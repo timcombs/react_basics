@@ -47,8 +47,18 @@ button:focus {
   font-size: 20px;
   text-align: center;
   padding: 10vh 2vh 0vh 2vh;
+  margin-left: 6vh;
 }
- 
+
+.quote:before {
+  content: "\201C";
+  font-family: Garamond, serif;
+  font-size: 75px;
+  position: absolute;
+  top: 42vh;
+  margin-left: -7vh;
+}
+
 .author {
   color: rgb(101,113,113);
   font-size: 16px;
@@ -58,12 +68,18 @@ button:focus {
 
 .button {
   border-radius: 3px;
-  font-size: 2vh;
+  font-size: 3vh;
   text-align: right;
   padding: 2vh;
   margin: 5vh;
   border-color: rgb(119,93,93);
   border-width: 1px;
+}
+
+.social {
+  text-align: center;
+  width: 7vh;
+  margin-right: 3vh;
 }
 
 body {

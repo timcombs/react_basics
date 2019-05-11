@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fab /* faTumblrSquare, faTwitterSquare */ } from '@fortawesome/free-brands-svg-icons';
 import './index.css';
 
+library.add(fab /* faTumblrSquare, faTwitterSquare */);
+
+
 /* TODOs
-  1 - add icons for twitter and tumblr buttons
-  2 - color of button should change like the New Quote button text
-  3 - find a cool web font to use
   4 - figure out how to bundle it for the desolidstate website
   4.5 - get the newDevCity.io website and bundle it there.
-  5 - do the weird beginning quote thing?
 */
 
 class App extends React.Component {
@@ -119,13 +122,13 @@ function NewQuoteButton(props) {
 function TwitterButton(props) {
   console.log(props);
   return (
-    <button className='button elem-clr1 txt-clr1' name='twitter' onClick={props.onClick}>Twitter</button>
+    <button className='button social elem-clr1 txt-clr1' name='twitter' onClick={props.onClick}><FontAwesomeIcon icon={['fab', 'twitter']} /></button>
   );
 }
 
 function TumblrButton(props) {
   return (
-    <button className='button elem-clr1 txt-clr1' name='tumblr' onClick={props.onClick}>Tumblr</button>
+    <button className='button social elem-clr1 txt-clr1' name='tumblr' onClick={props.onClick}><FontAwesomeIcon icon={['fab', 'tumblr']} /></button>
   );
 }
 
