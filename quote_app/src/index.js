@@ -50,16 +50,13 @@ class App extends React.Component {
   
   handleClick(e) {
     if (e.target.name === 'newquote') {
-      console.log('NEWQUOTE');
       this.setState({
         currQuote: this.getQuote(this.state.quotes)
       });
       this.changeColors();
     }else if (e.target.name === 'twitter') {
-      console.log('TWITTER');
       window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent(`${this.state.currQuote.quote} -${this.state.currQuote.author}`), '_blank');
     }else if (e.target.name === 'tumblr') {
-    console.log('TUMBLR');
     window.open('https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=' + encodeURIComponent(this.state.currQuote.author) + '&content=' + encodeURIComponent(this.state.currQuote.quote)+'&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button', '_blank');
     }
 
@@ -99,11 +96,11 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(window.innerWidth);
     return (
       <div>
         <section className='card'>
           <Quote currQuote={this.state.currQuote} />
-          {/* <AllQuotes quotes={this.state.quotes} /> */}
           <TwitterButton onClick={(e) => this.handleClick(e)} />
           <TumblrButton onClick={(e) => this.handleClick(e)} />
           <NewQuoteButton onClick={(e) => this.handleClick(e)} />
@@ -120,7 +117,6 @@ function NewQuoteButton(props) {
 }
 
 function TwitterButton(props) {
-  console.log(props);
   return (
     <button className='button social elem-clr1 txt-clr1' name='twitter' onClick={props.onClick}><FontAwesomeIcon icon={['fab', 'twitter']} /></button>
   );
@@ -135,26 +131,11 @@ function TumblrButton(props) {
 function Quote(props) {
   return (
     <div>
-      <p className='quote txt-clr1'>{props.currQuote.quote}</p>
+      <p className='quote txt-clr1'>“{props.currQuote.quote}”</p>
       <p className='author'>- {props.currQuote.author}</p>
     </div>
   );
 }
-
-
-
-// function AllQuotes(props) {
-//    const quotes = props.quotes.map((quote) => {
-//       return (
-//         <div key={quote.author + quote.quote.slice(0, 10)}>{quote.quote}</div>
-//       );
-//     });
-//   console.log(props);
-
-//   return (
-//     <div>{quotes}</div>
-//   );
-// }
 
 // ++++++++++++++++++++++++++++++++++++++++++++++
 ReactDOM.render(

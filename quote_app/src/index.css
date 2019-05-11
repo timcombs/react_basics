@@ -46,24 +46,14 @@ button:focus {
 .quote {
   font-size: 20px;
   text-align: center;
-  padding: 10vh 2vh 0vh 2vh;
-  margin-left: 6vh;
-}
-
-.quote:before {
-  content: "\201C";
-  font-family: Garamond, serif;
-  font-size: 75px;
-  position: absolute;
-  top: 42vh;
-  margin-left: -7vh;
+  padding: 3vw 3vw 0vw 3vw;
 }
 
 .author {
   color: rgb(101,113,113);
   font-size: 16px;
   text-align: right;
-  padding: 2vh;
+  padding: 2vw;
 }
 
 .button {
