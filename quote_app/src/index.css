@@ -58,18 +58,18 @@ button:focus {
 
 .button {
   border-radius: 3px;
-  font-size: 3vh;
+  font-size: 3.25vw;
   text-align: right;
-  padding: 2vh;
-  margin: 5vh;
+  padding: 2vw;
+  margin: 5vw;
   border-color: rgb(119,93,93);
   border-width: 1px;
 }
 
 .social {
   text-align: center;
-  width: 7vh;
-  margin-right: 3vh;
+  width: 8vw;
+  margin-right: 3vw;
 }
 
 body {
@@ -126,3 +126,67 @@ body {
   color: rgb(189,129,105);
   transition: color .45s ease-in-out;
 }
+
+@media (min-width: 600px) {
+  .button {
+    font-size: 2.75vw;
+    margin: 4.5vw;
+  }
+  
+  .social {
+    margin-right: 2.5vw;
+  }
+}
+
+@media (min-width: 720px) {
+  .button {
+    font-size: 2.25vw;
+    margin: 4vw;
+  }
+  
+  .social {
+    width: 7vw;
+    margin-right: 2vw;
+    margin-left: 4.25vw;
+  }
+}
+
+@media (min-width: 880px) {
+  .button {
+    font-size: 1.75vw;
+    margin: 3.5vw;
+  }
+
+  .social {
+    width: 6vw;
+    margin-right: 1.5vw;
+    margin-left: 3.75vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .button {
+    font-size: 1.25vw;
+    margin: 3vw;
+  }
+
+  .social {
+    width: 5.5vw;
+    margin-right: 1vw;
+    margin-left: 3vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .button {
+    font-size: 1.25vw;
+    margin: 2vw;
+  }
+
+  .social {
+    width: 5.5vw;
+    margin-right: 1vw;
+    margin-left: 2vw;
+  }
+}
+
