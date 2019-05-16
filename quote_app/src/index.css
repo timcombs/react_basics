@@ -41,6 +41,7 @@ button:focus {
   width: 450px;
   margin: 20% auto;
   border-radius: 3px;
+  height: 100%;
 }
 
 .quote {
@@ -70,10 +71,6 @@ button:focus {
   text-align: center;
   width: 8vw;
   margin-right: 3vw;
-}
-
-body {
-  background-color: rgb(154,96,96);
 }
 
 .getquote {
