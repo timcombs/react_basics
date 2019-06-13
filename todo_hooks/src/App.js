@@ -71,6 +71,13 @@ function App() {
     setTodos(newTodos);
   };
 
+  const toggleTodoColor = (index) => {
+    const newTodos = [...todos];
+    newTodos
+
+    setTodos()
+  }
+
   return (
     <div className='app'>
       <div className='todo-list'>
@@ -80,6 +87,7 @@ function App() {
           todo={todo}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
+          toggleTodoColor={toggleTodoColor}
         />
         ))}
         <TodoForm addTodo={addTodo} />
