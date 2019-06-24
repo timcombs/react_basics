@@ -71,12 +71,12 @@ function App() {
     setTodos(newTodos);
   };
 
-  const toggleTodoColor = (index) => {
-    const newTodos = [...todos];
-    newTodos
+  // const toggleTodoColor = (index) => {
+  //   const newTodos = [...todos];
+  //   newTodos
 
-    setTodos()
-  }
+  //   setTodos()
+  // }
 
   return (
     <div className='app'>
