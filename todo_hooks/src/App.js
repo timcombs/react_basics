@@ -87,7 +87,7 @@ function App() {
           todo={todo}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
-          toggleTodoColor={toggleTodoColor}
+          /* toggleTodoColor={toggleTodoColor} */
         />
         ))}
         <TodoForm addTodo={addTodo} />
