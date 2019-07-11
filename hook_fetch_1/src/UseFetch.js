@@ -3,18 +3,16 @@ import { useState, useEffect } from 'react';
 function UseFetch(url) {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  async function getData() {
     const proxyURL = 'https://cors-anywhere.herokuapp.com/';
-  
-    fetch(proxyURL + url, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'text/plain',
-        'mode' : 'no-cors'
-      }})
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((err) => console.log(err, 'browser hates you!'));
+    const res = await fetch(proxyURL + url);
+    const data = await res.json();
+    setData(data);
+  }
+
+  useEffect(() => {
+    getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
   return data;
