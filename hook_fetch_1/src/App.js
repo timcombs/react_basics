@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = { buttonText: 'Click me, please' };
-    this.handleClick = this.handleClick.bind(this);
-  }
+function App() {
+  const [buttonText, setButtonText] = useState('Click me, please');
 
-  handleClick() {
-    this.setState(() => {
-      return { buttonText: 'Thanks, been clicked!' };
-    });
+  function handleClick() {
+    return setButtonText('Thanks, been clicked!');
   }
-
-  render() {
-    const { buttonText } = this.state;
-    return <button onClick={this.handleClick}>{buttonText}</button>
-  }
+  
+  return <button onClick={handleClick}>{buttonText}</button>
 }
-
 
 export default App;
