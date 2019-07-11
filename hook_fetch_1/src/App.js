@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
+import UseFetch from './UseFetch';
 import './App.css';
 
-function DataLoader() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.coinmarketcap.com/v1/ticker/?limit=10', {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "text/plain",
-        "mode" : "no-cors"
-    }})
-    .then((response) => response.json())
-    .then((data) => setData(data));
-  }, []);
+function DataLoader(props) {
+  const data = UseFetch(props.url);
 
   return (
     <div>
       <ul>
         {data.map((el) => (
-          <li key={el.id}>{el.title}</li>
+          <li key={el.id}>{el.name}</li>
         ))}
       </ul>
     </div>
@@ -29,15 +19,17 @@ function DataLoader() {
 
 function App() {
   const [buttonText, setButtonText] = useState('Click me, please');
+  const [url, setUrl] = useState('https://api.coinmarketcap.com/v1/ticker/?limit=10');
 
   function handleClick() {
-    return setButtonText('Thanks, been clicked!');
+    setButtonText('Thanks, been clicked!');
+    setUrl('https://api.coinmarketcap.com/v1/ticker/?limit=20');
   }
   
   return (
     <div>
       <button onClick={handleClick}>{buttonText}</button>
-      <DataLoader />
+      <DataLoader url={url}/>
     </div>
   );
 }
