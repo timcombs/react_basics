@@ -25,6 +25,13 @@ function App() {
     <div className='App'>
       <h1>React drag-n-drop component</h1>
       <DragAndDrop data={data} dispatch={dispatch} />
+      <ol className='dropped-files'>
+        {data.fileList.map((f) => {
+          return (
+            <li key={f.name}>{f.name}</li>
+          )
+        })}
+      </ol>
     </div>
   );
 }
