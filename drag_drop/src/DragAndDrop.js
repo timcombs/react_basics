@@ -5,13 +5,13 @@ const DragAndDrop = props => {
 
   const handleDragEnter = (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
     dispatch({ type: 'SET_DROP_DEPTH', dropDepth: data.dropDepth + 1 })
   };
 
   const handleDragLeave = (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
 
     dispatch({ type: 'SET_DROP_DEPTH', dropDepth: data.dropDepth - 1 });
 
@@ -23,21 +23,50 @@ const DragAndDrop = props => {
   
   const handleDragOver = (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
     e.dataTransfer.dropEffect = 'copy';
 
     dispatch({ type: 'SET_IN_DROP_ZONE', inDropZone: true });
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
+
+    const supportedFileTypes = ['image/jpeg', 'image/png'];
     let files = [...e.dataTransfer.files];
 
     if (files && files.length > 0) {
       const existingFiles = data.fileList.map((f) => f.name);
       files = files.filter((f) => !existingFiles.includes(f.name));
 
+      let f = files[0];
+      console.log(f);
+
+      if (supportedFileTypes.indexOf(f.type) > -1) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          console.log('here');
+          f.preview = e.target.result;
+        }
+        
+        reader.readAsDataURL(f);
+      }
+
+      // files = files.map((f) => {
+      //   if (supportedFileTypes.indexOf(f.type) > -1) {
+      //     const reader = new FileReader();
+      //     reader.onload = (e) => {
+      //       console.log('here');
+      //       f.preview = e.target.result;
+      //     }
+      //     reader.readAsDataURL(f);
+      //   }
+        
+      //   return f;
+      // })
+
+      // console.log('files in handleDrop', files);
       dispatch({ type: 'ADD_FILE_TO_LIST', files });
       e.dataTransfer.clearData();
 
@@ -45,6 +74,12 @@ const DragAndDrop = props => {
       dispatch({ type: 'SET_IN_DROP_ZONE', InDropZone: false });
     }
   };
+
+  // async function assignResult() {
+  //   const reader = new FileReader();
+  //   reader.onLoad = (el) => f.preview = el.target.result;
+  //   reader.readAsDataURL(e.dataTransfer.files[0]);
+  // }
 
   return (
     <div

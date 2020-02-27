@@ -12,13 +12,15 @@ function App() {
         return { ...state, inDropZone: action.inDropZone };
       case 'ADD_FILE_TO_LIST':
         return { ...state, fileList: state.fileList.concat(action.files) };
+      // case 'ADD_PREVIEW_TO_LIST':
+      //   return { ...state, }
       default:
         return state;
     }
   };
 
   const [data, dispatch] = React.useReducer(
-    reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
+    reducer, { dropDepth: 0, inDropZone: false, fileList: []}
   )
 
   return (
@@ -27,8 +29,19 @@ function App() {
       <DragAndDrop data={data} dispatch={dispatch} />
       <ol className='dropped-files'>
         {data.fileList.map((f) => {
+          console.log('is this even working');
+          console.log('is this even working')
+          console.log(f, f.preview);
+          console.log('is this even working');
+          console.log('is this even working');
+          console.log('is this even working');
+          console.log('is this even working');
+
           return (
-            <li key={f.name}>{f.name}</li>
+            <li key={f.name}>
+              <img src={`URL(${f.preview})`} alt={f.name} />
+              {f.name}
+            </li>
           )
         })}
       </ol>
