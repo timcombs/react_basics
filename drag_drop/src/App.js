@@ -29,13 +29,7 @@ function App() {
       <DragAndDrop data={data} dispatch={dispatch} />
       <ol className='dropped-files'>
         {data.fileList.map((f) => {
-          console.log('is this even working');
-          console.log('is this even working')
-          console.log(f, f.preview);
-          console.log('is this even working');
-          console.log('is this even working');
-          console.log('is this even working');
-          console.log('is this even working');
+          console.log('in the App', f.preview);
 
           return (
             <li key={f.name}>

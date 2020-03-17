@@ -49,9 +49,11 @@ const DragAndDrop = props => {
           console.log('here');
           f.preview = e.target.result;
         }
-        
+
+        console.log('outside the if', f.preview);
         reader.readAsDataURL(f);
       }
+
 
       // files = files.map((f) => {
       //   if (supportedFileTypes.indexOf(f.type) > -1) {
